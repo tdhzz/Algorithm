@@ -1,4 +1,4 @@
-package week03
+package kimfang
 
 //给定一个 N 叉树，找到其最大深度。
 //
