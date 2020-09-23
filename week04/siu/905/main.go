@@ -7,13 +7,8 @@ func main() {
 }
 
 func sortArrayByParity(A []int) []int {
-	length := len(A)
-	if length == 0 {
-		return A
-	}
-
 	left := 0
-	right := length - 1
+	right := len(A) - 1
 	for left < right {
 		if A[left]%2 == 0 {
 			left++
