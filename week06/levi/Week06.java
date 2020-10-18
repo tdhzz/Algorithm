@@ -21,4 +21,26 @@ public class Week06 {
         }
         return B;
     }
+    
+    public boolean canWinNim(int n) {
+        List<Integer> list = new ArrayList<>();
+        public int minDiffInBST(TreeNode root) {
+            inOrder(root);
+            int diff = Integer.MAX_VALUE;
+            for(int i = 0;i < list.size() - 1;i++){
+                if(list.get(i + 1) - list.get(i) < diff){
+                    diff = list.get(i + 1) - list.get(i);
+                }
+            }
+            return diff;
+        }
+    }
+
+        public void inOrder(TreeNode root){
+            if(root == null) return ;
+
+            inOrder(root.left);
+            list.add(root.val);
+            inOrder(root.right);
+        }
 }
