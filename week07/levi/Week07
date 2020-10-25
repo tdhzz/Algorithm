@@ -1,0 +1,101 @@
+package com.hck.leetcode.easy;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+public class Week07 {
+
+    public static void main(String[] args) {
+        strStr("abc", "c");
+    }
+
+
+    public static int strStr(String haystack, String needle) {
+        int dataLength = haystack.length();
+        int targetLength = needle.length();
+        int length = dataLength - targetLength;
+        if (length < 0) {
+            return -1;
+        }
+        for (int i = 0; i < length + 1; i++) {
+            if (haystack.substring(i, i + targetLength).equals(needle)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public int guessNumber(int n) {
+        int start = 1;
+        int end = n;
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+            int result = guess(mid);
+            if (result == 0) {
+                return mid;
+            }
+            if (result == -1) {
+                //左边
+                end = mid - 1;
+            } else {
+                //右边
+                start = mid + 1;
+            }
+        }
+        return 1;
+    }
+
+    public static int guess(int num) {
+        return new Random(10).nextInt();
+    }
+
+    //[[1,1,0],[1,0,1],[0,0,0]]
+    public int[][] flipAndInvertImage(int[][] A) {
+        int length = A.length;
+        int[][] result = new int[A[0].length][A.length];
+        for (int i = 0; i < length; i++) {
+            int[] row = A[i];
+            for (int j = row.length - 1; j >= 0; j--) {
+                result[i][row.length - j - 1] = row[j] ^ 1;
+            }
+        }
+        return result;
+    }
+
+
+    public List<String> buildArray(int[] target, int n) {
+        List<String> result = new ArrayList<>();
+        String Pop = "Pop";
+        String Push = "Push";
+        int j = 0;
+        int targetLength = target.length;
+        for (int i = 1; i <= n; i++) {
+            if (target[j] == i) {
+                result.add(Push);
+                if(j==targetLength-1){
+                    break;
+                }
+                j++;
+            } else {
+                result.add(Push);
+                result.add(Pop);
+            }
+        }
+        return result;
+    }
+
+
+    public int[] shuffle(int[] nums, int n) {
+        int[] a = new int[nums.length];
+        int j = 0;
+        for(int i=0;i<n;i++){
+            //一个从0开始
+            a[j++] = nums[i];
+            //一个从n-1开始
+            a[j++]= nums[n+i];
+        }
+        return  a;
+    }
+}
+
