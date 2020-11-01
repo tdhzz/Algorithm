@@ -1,0 +1,4 @@
+select tw.name,tw.population,tw.area from World tw
+where tw.area > 3000000
+union select tw1.name,tw1.population,tw1.area from World tw1
+where tw1.population > 25000000
